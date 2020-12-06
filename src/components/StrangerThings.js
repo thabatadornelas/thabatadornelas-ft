@@ -1,10 +1,11 @@
 import React from 'react';
 import CharactersService from '../services/charactersAPI';
-// require('dotenv').config();
+
 require('dotenv').config();
 
-const getRealityClass = (hereIsTheUpsideDownWorld) =>
-  hereIsTheUpsideDownWorld ? 'upside-down' : 'stranger-things';
+const getRealityClass = (hereIsTheUpsideDownWorld) => (
+  hereIsTheUpsideDownWorld ? 'upside-down' : 'stranger-things'
+);
 
 const strangerThingsConfig = {
   url: process.env.REACT_APP_HAWKINS_URL,
@@ -58,7 +59,7 @@ class StrangerThings extends React.Component {
       {
         page: 1,
       },
-      this.searchCharacter(1),
+      this.searchCharacter(1)
     );
   }
 
@@ -83,12 +84,9 @@ class StrangerThings extends React.Component {
       {
         page: this.state.page + 1,
       },
-      () => this.searchCharacter(),
+      () => this.searchCharacter()
     );
   }
-
-// crédito à explicação da Tereza
-// crédito à ajuda da Estela
 
   previousPage() {
     if (this.state.page <= 1) return;
@@ -97,21 +95,29 @@ class StrangerThings extends React.Component {
       {
         page: this.state.page - 1,
       },
-      () => this.searchCharacter(),
+      () => this.searchCharacter()
     );
   }
 
   render() {
     return (
-      <div className={`reality ${getRealityClass(this.state.hereIsTheUpsideDownWorld)}`}>
+      <div
+        className={`reality ${getRealityClass(
+          this.state.hereIsTheUpsideDownWorld
+        )}`}
+      >
+        <h1>Em desenvolvimento</h1>
         <div className="content strangerfy">
-          {process.env.REACT_APP_DEVELOPMENT === 'desenvolvimento' && <h1>Em desenvolvimento</h1>}
           <div className="change-reality">
-            <button onClick={this.changeRealityClick}>Mudar de realidade</button>
+            <button onClick={this.changeRealityClick}>
+              {' '}
+              Mudar de Realidade
+            </button>
           </div>
+
           <div>
             <input
-              placeholder="Nome do personagem"
+              placeholder="Nome do Personagem"
               onChange={this.handleInput}
               value={this.state.characterName}
             />
